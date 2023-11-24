@@ -13,6 +13,6 @@ const items = [
     { icon: 'mdi-play', text: 'Слушать', value: 'play', route: '/' },
     { icon: 'mdi-heart', text: 'Избранное', value: 'favorites', route: '/' },
     { icon: 'mdi-magnify', text: 'Поиск', value: 'search', route: '/' },
-    { icon: 'mdi-accont-group', text: 'Комнаты', value: 'rooms', route: '/rooms' },
+    { icon: 'mdi-account-group', text: 'Комнаты', value: 'rooms', route: '/rooms' },
 ] 
 </script>
