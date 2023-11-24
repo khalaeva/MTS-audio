@@ -8,11 +8,11 @@
     </v-bottom-navigation>
 </template>
 
-<script>
+<script setup>
 const items = [
     { icon: 'mdi-play', text: 'Слушать', value: 'play', route: '/' },
     { icon: 'mdi-heart', text: 'Избранное', value: 'favorites', route: '/' },
     { icon: 'mdi-magnify', text: 'Поиск', value: 'search', route: '/' },
-    { icon: 'mdi-magnify', text: 'Комнаты', value: 'rooms', route: '/rooms' },
+    { icon: 'mdi-accont-group', text: 'Комнаты', value: 'rooms', route: '/rooms' },
 ] 
 </script>
