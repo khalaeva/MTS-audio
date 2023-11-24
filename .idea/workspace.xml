@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3e6018f6-1ae4-45d5-817f-440a15b350c2" name="Changes" comment="moved">
+      <change beforePath="$PROJECT_DIR$/backend-server/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-server/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-server/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-server/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-server/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-server/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-server/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-server/src/main/java/com/project/hackathon/HackathonApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-server/src/main/java/com/project/hackathon/controller/RoomController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-server/src/main/java/com/project/hackathon/controller/ServerController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-server/src/main/java/com/project/hackathon/dto/request/ServerCreateRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-server/src/main/java/com/project/hackathon/dto/response/ErrorMessageResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-server/src/main/java/com/project/hackathon/dto/response/ServerCreateResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-server/src/main/java/com/project/hackathon/entity/RoomEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-server/src/main/java/com/project/hackathon/entity/ServerEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-server/src/main/java/com/project/hackathon/exception/AccessDeniedException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-server/src/main/java/com/project/hackathon/exception/business/BusinessException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-server/src/main/java/com/project/hackathon/exception/business/BusinessExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-server/src/main/java/com/project/hackathon/repository/ServerRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-server/src/main/java/com/project/hackathon/service/ServerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-server/src/main/java/com/project/hackathon/service/impl/ServerServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-server/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-server/src/test/java/com/project/hackathon/HackathonApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/server-room">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2Ydj32v9s6WhytEHt3wrzYufK8f" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "android.gradle.sync.needed": "true",
+    "git-widget-placeholder": "server-room",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle clean build" />
+      <command value="gradle clean" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.HackathonApplication">
+    <configuration name="server-room [clean build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/server-room" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="server-room [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/server-room" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="HackathonApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="hackathon.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.project.hackathon.HackathonApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.project.hackathon.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.HackathonApplication" />
+        <item itemvalue="Gradle.server-room [clean]" />
+        <item itemvalue="Gradle.server-room [clean build]" />
+        <item itemvalue="Spring Boot.HackathonApplication" />
+        <item itemvalue="Gradle.server-room [clean]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3e6018f6-1ae4-45d5-817f-440a15b350c2" name="Changes" comment="" />
+      <created>1700862149547</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1700862149547</updated>
+      <workItem from="1700862152809" duration="392000" />
+      <workItem from="1700862560268" duration="481000" />
+      <workItem from="1700863059217" duration="51000" />
+      <workItem from="1700863123769" duration="312000" />
+    </task>
+    <task id="LOCAL-00001" summary="moved">
+      <option name="closed" value="true" />
+      <created>1700862524364</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1700862524364</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="executable:docker" />
+    <option featureType="dependencySupport" implementationName="executable:kubectl" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="moved" />
+    <option name="LAST_COMMIT_MESSAGE" value="moved" />
+  </component>
+</project>
