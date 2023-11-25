@@ -18,8 +18,8 @@ const routes = [
         component: () => import('@/views/LoginPage.vue'),
     },
     {
-      path: '/room/:id',
-      component: () => import('@/views/Room.vue'),
+      path: '/room',
+      component: () => import('@/views/ListRoom.vue'),
     },
 ]
 
