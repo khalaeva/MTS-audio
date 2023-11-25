@@ -4,8 +4,20 @@
         <v-form
             v-model="isFormValid"
             @submit.prevent="formSubmit()"
+            validate-on="submit"
             class="element"
         >
+            <v-text-field
+                v-if="!props.loginStage"
+                v-model="userData.email"
+                :rules="[formRules.required, formRules.isEmail]"
+                class="element"
+                label="Электронная почта"
+                density="compact"
+                variant="outlined"
+                rounded
+                required
+            />
             <v-text-field
                 v-model="userData.username"
                 :rules="[formRules.required, formRules.counter]"
@@ -21,9 +33,9 @@
             <v-text-field
                 ref="passwordInput"
                 v-model="userData.password"
-                @click:append-inner="changeVisibility()"
+                @click:append-inner="changeVisibility(passwordObj)"
                 :rules="[formRules.required]"
-                :append-inner-icon="passwordIcon"
+                :append-inner-icon="passwordsIcon(passwordObj.isTextVisible)"
                 class="element"
                 type="password"
                 label="Пароль"
@@ -34,8 +46,13 @@
             />
             <v-text-field
                 v-if="!props.loginStage"
+                ref="repeatPasswordInput"
                 v-model="userData.repeatedPassword"
+                @click:append-inner="changeVisibility(repeatPasswordObj)"
                 :rules="[formRules.required, formRules.passwordMatch]"
+                :append-inner-icon="
+                    passwordsIcon(repeatPasswordObj.isTextVisible)
+                "
                 class="element"
                 type="password"
                 label="Повторите пароль"
@@ -63,9 +80,22 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, computed } from 'vue'
+import { ref, reactive, computed, Ref } from 'vue'
 import { RouteLocationRaw } from 'vue-router'
+import axios from 'axios'
 import router from '@/router'
+
+interface PasswordData<T = HTMLInputElement> {
+    input: T
+    isTextVisible: boolean
+}
+
+interface UserData {
+    username: string
+    password: string
+    repeatedPassword?: string
+    email?: string
+}
 
 const props = withDefaults(
     defineProps<{
@@ -78,6 +108,7 @@ const content = computed(() =>
         ? {
               headerText: 'Вход',
               submitButtonText: 'Войти',
+              submitLink: 'login',
               footerText: 'Нет аккаунта?',
               footerLinkText: 'Зарегистрироваться',
               footerLinkObj: <RouteLocationRaw>{ name: 'registration' },
@@ -86,6 +117,7 @@ const content = computed(() =>
         : {
               headerText: 'Регистрация',
               submitButtonText: 'Зарегистрироваться',
+              submitLink: 'register',
               footerText: 'Уже есть аккаунт?',
               footerLinkText: 'Войти в аккаунт',
               footerLinkObj: <RouteLocationRaw>{ name: 'login' },
@@ -97,29 +129,52 @@ const errorText = ref('')
 const isError = computed(() => !!errorText.value)
 
 const userData = reactive({
+    email: '',
     username: '',
     password: '',
     repeatedPassword: '',
 })
+const userDataToSend = computed(() => {
+    const result: UserData = {
+        username: userData.username,
+        password: userData.password,
+    }
+    if (props.loginStage) {
+        result.email = userData.email
+        result.repeatedPassword = userData.repeatedPassword
+    }
+    return result
+})
 const maxUsernameLength = ref(20)
-const passwordInput = ref<HTMLInputElement | null>(null)
-const showPassword = ref(false)
-const passwordIcon = computed(() =>
-    showPassword.value ? 'mdi-eye-off' : 'mdi-eye',
+const passwordInput = ref<HTMLInputElement>()
+const passwordObj = reactive<PasswordData<Ref<HTMLInputElement>>>({
+    input: passwordInput,
+    isTextVisible: false,
+})
+const repeatPasswordInput = ref<HTMLInputElement>()
+const repeatPasswordObj = reactive<PasswordData<Ref<HTMLInputElement>>>({
+    input: repeatPasswordInput,
+    isTextVisible: false,
+})
+const passwordsIcon = computed(
+    () => (isVisible: boolean) => (isVisible ? 'mdi-eye-off' : 'mdi-eye'),
 )
-function changeVisibility() {
-    showPassword.value = !showPassword.value
-    if (!passwordInput.value) {
+function changeVisibility(passwordData: PasswordData) {
+    passwordData.isTextVisible = !passwordData.isTextVisible
+    if (!passwordData.input) {
         return
     }
-    passwordInput.value.type = showPassword.value ? 'text' : 'password'
-    const passwordLength = userData.password.length
-    passwordInput.value.setSelectionRange(passwordLength, passwordLength)
+    passwordData.input.type = passwordData.isTextVisible ? 'text' : 'password'
+    const passwordLength = passwordData.input.value.length
+    passwordData.input.setSelectionRange(passwordLength, passwordLength)
 }
 
 const isFormValid = ref<boolean | null>(null)
 const formRules = reactive({
     required: (value: string) => !!value || 'Обязательное поле',
+    isEmail: (value: string) =>
+        /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value) ||
+        'Неверный адрес электронной почты',
     counter: (value: string) =>
         value.length <= maxUsernameLength.value ||
         `Максимум ${maxUsernameLength.value} символов`,
@@ -132,7 +187,9 @@ async function formSubmit() {
             return
         }
         errorText.value = ''
-        // await axios.post(props.submitObj.url, userData, props.submitObj.config)
+        await axios.post(content.value.submitLink, userDataToSend.value, {
+            timeout: 3000,
+        })
         router.push(content.value.redirectLink)
     } catch (e) {
         console.log(e)
