@@ -24,6 +24,7 @@ const routes = [
     },
     {
         path: '/rooms',
+        name: 'rooms',
         component: () => import('@/views/ListRoom.vue'),
     },
 ]
