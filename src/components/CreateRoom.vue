@@ -32,7 +32,9 @@
                     text="Пригласить участника"
                 ></v-btn>
 
-                <div v-for="i in 5" :key="i" class="person mb-5">
+                <ListOfFriends/>
+
+                <!-- <div v-for="i in 5" :key="i" class="person mb-5">
                     <div class="icon-back ml-5 mr-5">
                         <v-icon icon="mdi-account" class="mt-1"></v-icon>
                     </div>
@@ -43,7 +45,7 @@
                         icon="mdi-close"
                         class="mt-1"
                     ></v-icon>
-                </div>
+                </div> -->
 
                 <v-card-actions>
                     <v-spacer></v-spacer>
@@ -64,6 +66,7 @@
 
 <script setup>
 import {reactive} from 'vue'
+import ListOfFriends from './ListOfFriends.vue';
 
 const emit = defineEmits(['roomCreated'])
 
