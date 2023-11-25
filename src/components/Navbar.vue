@@ -1,6 +1,6 @@
 <template>
-    <v-bottom-navigation>
-        <v-btn v-for="item in items" :value="item.value" router :to="item.route">
+    <v-bottom-navigation tag="footer">
+        <v-btn v-for="item in items" :value="item.value">
             <v-icon>{{ item.icon }}</v-icon>
             <span>{{ item.text }}</span>
         </v-btn>
@@ -9,9 +9,24 @@
 
 <script setup>
 const items = [
-    { icon: 'mdi-play', text: 'Слушать', value: 'play', route: '/fakepage/play' },
-    { icon: 'mdi-heart', text: 'Избранное', value: 'favorites', route: '/fakepage/favorites' },
-    { icon: 'mdi-magnify', text: 'Поиск', value: 'search', route: '/fakepage/search' },
+    {
+        icon: 'mdi-play',
+        text: 'Слушать',
+        value: 'play',
+        route: '/fakepage/play',
+    },
+    {
+        icon: 'mdi-heart',
+        text: 'Избранное',
+        value: 'favorites',
+        route: '/fakepage/favorites',
+    },
+    {
+        icon: 'mdi-magnify',
+        text: 'Поиск',
+        value: 'search',
+        route: '/fakepage/search',
+    },
     {
         icon: 'mdi-account-group',
         text: 'Комнаты',

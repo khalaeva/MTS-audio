@@ -1,20 +1,20 @@
 <template>
     <v-app v-if="isLogin">
-        <Navbar />
         <v-main class="main">
             <div class="container">
                 <router-view />
             </div>
         </v-main>
+        <Navbar />
     </v-app>
     <v-app v-else>
-       <LoginPage/>
+        <LoginPage />
     </v-app>
 </template>
 
 <script setup>
 import Navbar from '@/components/Navbar.vue'
-import LoginPage from './views/LoginPage.vue';
+import LoginPage from './views/LoginPage.vue'
 
 const isLogin = true
 </script>
