@@ -7,7 +7,7 @@
                 </div>
             </v-col>
             <v-col cols="4" align="center" justify="center">
-                <router-link to="/login">
+                <router-link to="/profile">
                     <v-avatar color="grey">  
                         <span  class="text-h5">CJ</span>
                     </v-avatar>

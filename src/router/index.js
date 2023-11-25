@@ -21,6 +21,10 @@ const routes = [
       path: '/room',
       component: () => import('@/views/ListRoom.vue'),
     },
+    {
+        path: '/profile',
+        component: () => import('@/views/Profile.vue'),
+    },
 ]
 
 const router = createRouter({
