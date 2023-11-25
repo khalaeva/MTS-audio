@@ -1,5 +1,6 @@
 package com.challenger.eurekaclientlobby.dto.socket;
 
+import com.challenger.eurekaclientlobby.entity.RoomMemberStatus;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,4 +19,6 @@ public class SocketDto {
     private String name;
     private UUID userId;
     private String username;
+    private RoomMemberStatus statusUser;
+    private UUID leaderId;
 }

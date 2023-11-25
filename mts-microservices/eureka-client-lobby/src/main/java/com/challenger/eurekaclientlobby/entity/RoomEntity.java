@@ -22,7 +22,4 @@ public class RoomEntity {
     private UUID serverId;
     private String name;
 
-    @OneToMany(mappedBy = "currentRoom")
-    private List<UserEntity> listeners;
-
 }

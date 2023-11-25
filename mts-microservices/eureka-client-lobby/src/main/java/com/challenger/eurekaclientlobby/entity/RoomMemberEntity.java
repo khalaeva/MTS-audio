@@ -9,15 +9,19 @@ import java.util.UUID;
 @Setter
 @Entity
 @Builder
-@Table(name = "users")
+@Table(name = "room_member")
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserEntity {
+public class RoomMemberEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    private String username;
+    private UUID userId;
+    private UUID serverId;
+    private UUID roomId;
+
+    private RoomMemberStatus status;
 
 }

@@ -1,18 +1,14 @@
 package com.challenger.eurekaclientlobby.service.impl;
 
+import com.challenger.eurekaclientlobby.entity.*;
+import com.challenger.eurekaclientlobby.repository.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.challenger.eurekaclientlobby.dto.request.RoomCreateRequest;
 import com.challenger.eurekaclientlobby.dto.request.RoomEditRequest;
 import com.challenger.eurekaclientlobby.dto.response.RoomCreateResponse;
 import com.challenger.eurekaclientlobby.dto.socket.SocketDto;
 import com.challenger.eurekaclientlobby.dto.socket.SocketEvent;
-import com.challenger.eurekaclientlobby.entity.RoomEntity;
-import com.challenger.eurekaclientlobby.entity.UserEntity;
 import com.challenger.eurekaclientlobby.exception.*;
-import com.challenger.eurekaclientlobby.repository.MemberRepository;
-import com.challenger.eurekaclientlobby.repository.RoomRepository;
-import com.challenger.eurekaclientlobby.repository.ServerRepository;
-import com.challenger.eurekaclientlobby.repository.UserRepository;
 import com.challenger.eurekaclientlobby.service.RoomService;
 import com.challenger.eurekaclientlobby.service.SocketService;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +25,7 @@ public class RoomServiceImpl implements RoomService {
     private final RoomRepository roomRepository;
     private final MemberRepository memberRepository;
     private final ServerRepository serverRepository;
-    private final UserRepository userRepository;
+    private final RoomMemberRepository roomMemberRepository;
     private final SocketService socketService;
 
     private final String URL_SERVER = "/server";
@@ -40,7 +36,7 @@ public class RoomServiceImpl implements RoomService {
     @Override
     @SneakyThrows
     public RoomCreateResponse createRoom(String cookie, RoomCreateRequest request) {
-        // Из куки там анау мынау берем айди
+
         UUID userId = mock;
 
         if (!serverRepository.existsByIdAndOwnerUser(request.getServerId(), userId)){
@@ -98,70 +94,80 @@ public class RoomServiceImpl implements RoomService {
     @SneakyThrows
     @Override
     public void joinRoom(String cookie, UUID roomId) {
+
         UUID userId = mock;
+        String username = "mock";
 
-        if (isNotInRoomOrLeave(userId)){
-            throw new FailedDisconnectRoomException();
-        }
+        leaveFromRoom(userId);
 
-        UUID serverId = roomRepository.getServerId(roomId).orElseThrow(RoomIsNotFoundException::new);
-        if (memberRepository.existsByUserIdAndServerId(userId, serverId)){
+        UUID serverId = roomRepository.getServerId(roomId)
+                .orElseThrow(RoomIsNotFoundException::new);
+
+        if (!memberRepository.existsByUserIdAndServerId(userId, serverId)){
             throw new AccessDeniedException();
         }
 
-        RoomEntity roomEntity = roomRepository.findById(roomId)
-                .orElseThrow(RoomIsNotFoundException::new);
-
-        UserEntity userEntity = userRepository.findById(userId)
-                .orElseThrow(UserIsNotFoundException::new);
-
-        roomEntity.getListeners().add(userEntity);
-        roomRepository.save(roomEntity);
+        RoomMemberEntity entity = roomMemberRepository.save(RoomMemberEntity.builder()
+                        .roomId(roomId)
+                        .serverId(serverId)
+                        .userId(userId)
+                        .status(
+                                roomMemberRepository.existsByServerIdAndRoomId(serverId, roomId) ?
+                                        RoomMemberStatus.LISTENER : RoomMemberStatus.LEADER
+                        )
+                .build());
 
         String message = objectMapper.writeValueAsString(
                 SocketDto.builder()
                         .event(SocketEvent.JOINED_ROOM)
-                        .roomId(roomEntity.getId())
-                        .serverId(roomEntity.getServerId())
-                        .username(userEntity.getUsername())
+                        .roomId(entity.getRoomId())
+                        .serverId(entity.getServerId())
+                        .username(username)
+                        .statusUser(entity.getStatus())
                         .build()
         );
-        socketService.sendMessage(serverId.toString(), URL_SERVER, message);
+        socketService.sendMessage(serverId.toString(), entity.getRoomId().toString(), message);
     }
 
     @Override
     public void leaveRoom(String cookie) {
         UUID userId = mock;
-        if (isNotInRoomOrLeave(userId)) {
-            throw new UserNotInRoomException();
-        }
+
+        leaveFromRoom(userId);
     }
 
     @SneakyThrows
-    private boolean isNotInRoomOrLeave(UUID userId){
+    private void leaveFromRoom(UUID userId) {
 
-        UserEntity userEntity = userRepository.findByIdAndCurrentRoomIsNotNull(userId)
+        RoomMemberEntity roomMemberEntity = roomMemberRepository.findByUserId(userId)
                 .orElse(null);
 
-        if (userEntity == null){
-            return false;
+        if (roomMemberEntity == null){
+            return;
         }
 
-        if(!userEntity.getCurrentRoom().getListeners().remove(userEntity)){
-            return true;
+        roomMemberRepository.delete(roomMemberEntity);
+
+        RoomMemberEntity randomMember = roomMemberRepository.getRandomUser(
+                roomMemberEntity.getServerId(),
+                roomMemberEntity.getRoomId()
+        ).orElse(null);
+
+        if (randomMember != null){
+            randomMember.setStatus(RoomMemberStatus.LEADER);
+            roomMemberRepository.save(randomMember);
         }
 
-        roomRepository.save(userEntity.getCurrentRoom());
         String message = objectMapper.writeValueAsString(
                 SocketDto.builder()
                         .event(SocketEvent.LEAVED_ROOM)
-                        .roomId(userEntity.getCurrentRoom().getId())
-                        .serverId(userEntity.getCurrentRoom().getServerId())
+                        .roomId(roomMemberEntity.getRoomId())
+                        .serverId(roomMemberEntity.getServerId())
                         .userId(userId)
+                        .leaderId(randomMember != null ? randomMember.getUserId() : null)
                         .build()
         );
-        socketService.sendMessage(userEntity.getCurrentRoom().getServerId().toString(), URL_SERVER, message);
-        return false;
+        socketService.sendMessage(roomMemberEntity.getServerId().toString(), URL_SERVER, message);
     }
 
 
