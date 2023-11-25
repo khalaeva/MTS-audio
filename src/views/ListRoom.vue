@@ -1,5 +1,19 @@
 <template>
     <v-container class="mt-6 ml-3">
+        <v-row class="mt-2">
+            <v-col cols="8">
+                <div class="text-h4 mb-1">
+                    Комнаты
+                </div>
+            </v-col>
+            <v-col cols="4" align="center" justify="center">
+                <router-link to="/login">
+                    <v-avatar color="grey">  
+                        <span  class="text-h5">CJ</span>
+                    </v-avatar>
+                </router-link>
+            </v-col>
+        </v-row>
         <v-row>
             <v-col cols="8">
                 <v-btn 
