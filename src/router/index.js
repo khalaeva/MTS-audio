@@ -18,10 +18,9 @@ const routes = [
         component: () => import('@/views/LoginPage.vue'),
     },
     {
-        path: '/profile',
-        name: 'profile',
-        component: () => import('@/views/Profile.vue')
-    }
+        path: '/room/:id',
+        component: () => import('@/views/RoomPage.vue'),
+    },
 ]
 
 const router = createRouter({
