@@ -31,7 +31,7 @@ const items = [
         icon: 'mdi-account-group',
         text: 'Комнаты',
         value: 'rooms',
-        route: '/rooms',
+        route: '/',
     },
 ]
 </script>
