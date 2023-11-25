@@ -1,8 +1,8 @@
 <template>
     <p>HelloWorld</p>
-    <CreateRoom/>
+    <EditRoom/>
 </template>
 
 <script setup>
-import CreateRoom from '../components/CreateRoom.vue'
+import EditRoom from '../components/EditRoom.vue'
 </script>
