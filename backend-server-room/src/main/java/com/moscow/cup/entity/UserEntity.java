@@ -3,26 +3,25 @@ package com.moscow.cup.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
 import java.util.UUID;
 
 @Getter
 @Setter
 @Entity
 @Builder
-@Table(name = "room")
+@Table(name = "user")
 @NoArgsConstructor
 @AllArgsConstructor
-public class RoomEntity {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    private UUID serverId;
-    private String name;
+    private String username;
 
-    @OneToMany(mappedBy = "currentRoom")
-    private List<UserEntity> listeners;
+    @ManyToOne
+    @JoinColumn(name = "room_id", referencedColumnName = "id")
+    private RoomEntity currentRoom;
 
 }

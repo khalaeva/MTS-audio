@@ -11,22 +11,20 @@ import java.util.UUID;
 @Setter
 @Entity
 @Builder
-@Table(name = "server")
+@Table(name = "member")
 @NoArgsConstructor
 @AllArgsConstructor
-public class ServerEntity {
+public class MemberEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    private String name;
-
-    private UUID ownerUser;
+    private UUID userId;
+    private UUID serverId;
 
     @CreatedDate
     @Builder.Default
-    private Date createdDate = new Date();
-
+    private Date joined = new Date();
 
 }
