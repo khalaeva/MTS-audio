@@ -1,8 +1,7 @@
 <template>
-    <v-bottom-navigation>
+    <v-bottom-navigation tag="footer">
         <v-btn v-for="item in items" :value="item.value">
             <v-icon>{{ item.icon }}</v-icon>
-
             <span>{{ item.text }}</span>
         </v-btn>
     </v-bottom-navigation>
