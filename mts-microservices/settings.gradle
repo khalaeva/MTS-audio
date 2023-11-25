@@ -1,0 +1,6 @@
+rootProject.name = 'mts-microservices'
+
+includeBuild 'eureka-server'
+includeBuild 'eureka-client-lobby'
+includeBuild 'eureka-streaming'
+includeBuild 'api-gateway'

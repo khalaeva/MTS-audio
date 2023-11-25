@@ -1,0 +1,16 @@
+server:
+  port: 0
+
+application:
+  resource: "resources/"
+  content:
+    type: "audio/mpeg"
+
+spring:
+  application:
+    name: eclientstreaming
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
