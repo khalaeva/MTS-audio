@@ -1,5 +1,5 @@
 <template>
-    <v-app v-if="isLogin">
+    <v-app v-if="appStore.isAuthorized">
         <v-main class="main">
             <div class="container">
                 <router-view />
@@ -8,15 +8,29 @@
         <Navbar />
     </v-app>
     <v-app v-else>
-        <LoginPage />
+        <AuthForm
+            :login-stage="loginStage"
+            @change-stage="changeStage()"
+            @successfull-login="successfullLogin()"
+        />
     </v-app>
 </template>
 
 <script setup>
+import { ref } from 'vue'
+import { useAppStore } from './store/app'
 import Navbar from '@/components/Navbar.vue'
-import LoginPage from './views/LoginPage.vue'
+import AuthForm from './components/AuthForm.vue'
 
-const isLogin = true
+const appStore = useAppStore()
+
+const loginStage = ref(true)
+function changeStage() {
+    loginStage.value = !loginStage.value
+}
+function successfullLogin() {
+    appStore.isAuthorized = !appStore.isAuthorized
+}
 </script>
 
 <style scoped>
