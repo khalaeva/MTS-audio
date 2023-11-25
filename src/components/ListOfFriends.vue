@@ -1,12 +1,12 @@
 <template>
     <v-container>
         <v-row class="mx-3">
-            <v-col>
-                <div class="text-h5">Друзья</div>
-            </v-col>
-            <v-col class="pt-4">
-                <v-btn  prepend-icon="mdi-account-search-outline" size="small" rounded="xl" variant="text">Добавить Друга</v-btn>
-            </v-col>
+          <v-col cols="6">
+            <div class="text-h5">Друзья</div>
+          </v-col> 
+          <v-col cols="6" class="pt-4">
+            <v-btn  prepend-icon="mdi-account-search-outline" size="small" rounded="xl" variant="text">Добавить Друга</v-btn>
+          </v-col>
         </v-row>
         <v-row class="px-3" >
             <v-list lines="one" max-height="210" width="100%">

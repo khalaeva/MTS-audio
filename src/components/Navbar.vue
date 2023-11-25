@@ -9,9 +9,24 @@
 
 <script setup>
 const items = [
-    { icon: 'mdi-play', text: 'Слушать', value: 'play', route: '/login' },
-    { icon: 'mdi-heart', text: 'Избранное', value: 'favorites', route: '/' },
-    { icon: 'mdi-magnify', text: 'Поиск', value: 'search', route: '/' },
+    {
+        icon: 'mdi-play',
+        text: 'Слушать',
+        value: 'play',
+        route: '/fakepage/play',
+    },
+    {
+        icon: 'mdi-heart',
+        text: 'Избранное',
+        value: 'favorites',
+        route: '/fakepage/favorites',
+    },
+    {
+        icon: 'mdi-magnify',
+        text: 'Поиск',
+        value: 'search',
+        route: '/fakepage/search',
+    },
     {
         icon: 'mdi-account-group',
         text: 'Комнаты',

@@ -18,8 +18,24 @@ const routes = [
         component: () => import('@/views/LoginPage.vue'),
     },
     {
-        path: '/room/:id',
-        component: () => import('@/views/RoomPage.vue'),
+        path: '/profile',
+        name: 'profile',
+        component: () => import('@/views/Profile.vue')
+    },
+    {
+        path: '/rooms',
+        name: 'rooms',
+        component: () => import('@/views/ListRoom.vue'),
+    },
+    {
+        path: '/createroom',
+        name: 'createroom',
+        component: () => import('@/components/CreateRoom.vue'),
+    },
+    {
+        path: '/fakepage/:name',
+        name: 'fakepage',
+        component: () => import('@/components/FakePage.vue'),
     },
 ]
 
