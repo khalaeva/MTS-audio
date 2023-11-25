@@ -18,8 +18,13 @@ const routes = [
         component: () => import('@/views/LoginPage.vue'),
     },
     {
-        path: '/room/:id',
-        component: () => import('@/views/RoomPage.vue'),
+        path: '/profile',
+        name: 'profile',
+        component: () => import('@/views/Profile.vue')
+    },
+    {
+        path: '/rooms',
+        component: () => import('@/views/ListRoom.vue'),
     },
 ]
 
