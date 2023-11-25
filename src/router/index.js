@@ -32,6 +32,11 @@ const routes = [
         name: 'createroom',
         component: () => import('@/components/CreateRoom.vue'),
     },
+    {
+        path: '/fakepage/:name',
+        name: 'fakepage',
+        component: () => import('@/components/FakePage.vue'),
+    },
 ]
 
 const router = createRouter({

@@ -1,5 +1,5 @@
 <template>
-    <v-app>
+    <v-app v-if="isLogin">
         <Navbar />
         <v-main class="main">
             <div class="container">
@@ -7,10 +7,16 @@
             </div>
         </v-main>
     </v-app>
+    <v-app v-else>
+       <LoginPage/>
+    </v-app>
 </template>
 
 <script setup>
 import Navbar from '@/components/Navbar.vue'
+import LoginPage from './views/LoginPage.vue';
+
+const isLogin = true
 </script>
 
 <style scoped>
