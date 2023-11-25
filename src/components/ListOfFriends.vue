@@ -13,12 +13,31 @@
                 <v-list-item
                   v-for="n in friends"
                   :key="n"
+                  class="mb-2"
                 >
-                    <v-list-item-title>
-                        <v-avatar color="grey" class="mr-2">  
-                            <v-icon>mdi-account</v-icon>
-                        </v-avatar>
-                        {{ n }}
+                    <v-list-item-title style="display: flex; align-items:center; justify-content: space-between;">
+                        <div>
+                            <v-avatar color="grey" class="mr-2">  
+                                <v-icon>mdi-account</v-icon>
+                            </v-avatar>
+                            {{ n }}
+                        </div>
+                        <span class="text-center">
+                            <v-menu>
+                              <template v-slot:activator="{ props }">
+                                <v-icon
+                                  v-bind="props"
+                                >
+                                  mdi-dots-vertical
+                                </v-icon>
+                              </template>
+                              <v-list>
+                                <v-list-item>
+                                  <v-list-item-title>Удалить</v-list-item-title>
+                                </v-list-item>
+                              </v-list>
+                            </v-menu>
+                        </span>
                     </v-list-item-title>
                 </v-list-item>
             </v-list>
