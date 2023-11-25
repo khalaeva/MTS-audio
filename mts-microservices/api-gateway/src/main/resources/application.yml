@@ -15,6 +15,10 @@ spring:
           uri: lb://eclientlobby
           predicates:
             - Path=/api/server/**
+        - id: eclientstreaming
+          uri: lb://eclientstreaming
+          predicates:
+            - Path=/api/stream/**
 
 eureka:
   client:
