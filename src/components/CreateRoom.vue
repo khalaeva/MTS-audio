@@ -4,7 +4,7 @@
         transition="dialog-bottom-transition"
     >
         <template v-slot:activator="{ props }">
-            <v-btn v-bind="props" text="Создать Комнату"> </v-btn>
+            <v-btn rounded="xl" prepend-icon="mdi-plus" variant="outlined" v-bind="props" text="Создать Комнату"> </v-btn>
         </template>
         <!-- проверка на авторизованность -->
 

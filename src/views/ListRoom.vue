@@ -16,13 +16,7 @@
         </v-row>
         <v-row>
             <v-col cols="8">
-                <v-btn 
-                size="small" 
-                prepend-icon="mdi-plus" 
-                block rounded="xl"
-                >
-                    Создать комнату
-                </v-btn>
+                <CreateRoom/>
             </v-col>
         </v-row>
         <v-row v-for="room in rooms" align="center" justify="start"> 
@@ -52,5 +46,6 @@
 </template>
 
 <script setup>
+import CreateRoom from '@/components/CreateRoom.vue';
 const rooms = [1, 2, 3, 4]
 </script>
