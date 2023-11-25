@@ -12,6 +12,7 @@
             :login-stage="loginStage"
             @change-stage="changeStage()"
             @successfull-login="successfullLogin()"
+            :key="loginStage"
         />
     </v-app>
 </template>

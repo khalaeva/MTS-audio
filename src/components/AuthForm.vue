@@ -71,7 +71,7 @@
             </div>
             <p class="element footer">
                 {{ content.footerText }}
-                <a @click="changeStage()" class="link">
+                <a @click="emit('changeStage')" class="link">
                     {{ content.footerLinkText }}
                 </a>
             </p>
@@ -99,13 +99,6 @@ const emit = defineEmits<{
     (e: 'changeStage'): void
     (e: 'successfullLogin'): void
 }>()
-function changeStage() {
-    userData.email = ''
-    userData.username = ''
-    userData.password = ''
-    userData.repeatedPassword = ''
-    emit('changeStage')
-}
 
 const props = withDefaults(
     defineProps<{
@@ -201,7 +194,7 @@ async function formSubmit() {
             emit('successfullLogin')
             return
         }
-        changeStage()
+        emit('changeStage')
     } catch (e) {
         console.log(e)
         errorText.value = 'На сервере произошла ошибка'
