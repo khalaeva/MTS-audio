@@ -1,6 +1,6 @@
 package com.challenger.eurekaclientlobby.repository;
 
-import com.moscow.cup.entity.RoomEntity;
+import com.challenger.eurekaclientlobby.entity.RoomEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

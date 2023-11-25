@@ -1,6 +1,6 @@
 package com.challenger.eurekaclientlobby.repository;
 
-import com.moscow.cup.entity.MemberEntity;
+import com.challenger.eurekaclientlobby.entity.MemberEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

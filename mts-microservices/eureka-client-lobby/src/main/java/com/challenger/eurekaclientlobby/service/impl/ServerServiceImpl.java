@@ -1,10 +1,10 @@
 package com.challenger.eurekaclientlobby.service.impl;
 
-import com.moscow.cup.dto.request.ServerCreateRequest;
-import com.moscow.cup.dto.response.ServerCreateResponse;
-import com.moscow.cup.entity.ServerEntity;
-import com.moscow.cup.repository.ServerRepository;
-import com.moscow.cup.service.ServerService;
+import com.challenger.eurekaclientlobby.dto.request.ServerCreateRequest;
+import com.challenger.eurekaclientlobby.dto.response.ServerCreateResponse;
+import com.challenger.eurekaclientlobby.entity.ServerEntity;
+import com.challenger.eurekaclientlobby.repository.ServerRepository;
+import com.challenger.eurekaclientlobby.service.ServerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

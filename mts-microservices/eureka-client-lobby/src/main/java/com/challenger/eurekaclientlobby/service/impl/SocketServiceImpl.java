@@ -1,6 +1,6 @@
 package com.challenger.eurekaclientlobby.service.impl;
 
-import com.moscow.cup.service.SocketService;
+import com.challenger.eurekaclientlobby.service.SocketService;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.messaging.simp.SimpMessagingTemplate;

@@ -1,8 +1,8 @@
 package com.challenger.eurekaclientlobby.controller;
 
-import com.moscow.cup.dto.request.ServerCreateRequest;
-import com.moscow.cup.dto.response.ServerCreateResponse;
-import com.moscow.cup.service.ServerService;
+import com.challenger.eurekaclientlobby.dto.request.ServerCreateRequest;
+import com.challenger.eurekaclientlobby.dto.response.ServerCreateResponse;
+import com.challenger.eurekaclientlobby.service.ServerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

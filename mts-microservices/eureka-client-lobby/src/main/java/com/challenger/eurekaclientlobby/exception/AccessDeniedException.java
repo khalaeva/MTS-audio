@@ -1,6 +1,6 @@
 package com.challenger.eurekaclientlobby.exception;
 
-import com.moscow.cup.exception.business.BusinessException;
+import com.challenger.eurekaclientlobby.exception.business.BusinessException;
 
 public class AccessDeniedException extends BusinessException {
 

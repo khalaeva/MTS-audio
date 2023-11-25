@@ -1,8 +1,8 @@
 package com.challenger.eurekaclientlobby.service;
 
-import com.moscow.cup.dto.request.RoomCreateRequest;
-import com.moscow.cup.dto.request.RoomEditRequest;
-import com.moscow.cup.dto.response.RoomCreateResponse;
+import com.challenger.eurekaclientlobby.dto.request.RoomCreateRequest;
+import com.challenger.eurekaclientlobby.dto.request.RoomEditRequest;
+import com.challenger.eurekaclientlobby.dto.response.RoomCreateResponse;
 
 import java.util.UUID;
 

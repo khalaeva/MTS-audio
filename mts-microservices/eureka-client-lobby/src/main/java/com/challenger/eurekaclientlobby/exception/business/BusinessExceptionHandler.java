@@ -1,6 +1,6 @@
 package com.challenger.eurekaclientlobby.exception.business;
 
-import com.moscow.cup.dto.response.ErrorMessageResponse;
+import com.challenger.eurekaclientlobby.dto.response.ErrorMessageResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
