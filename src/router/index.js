@@ -3,6 +3,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
     {
+        path: '/',
+        name: 'home',
+        component: () => import('@/views/HomePage.vue'),
+    },
+    {
         path: '/register',
         name: 'registration',
         component: () => import('@/views/RegisterPage.vue'),
@@ -15,12 +20,17 @@ const routes = [
     {
         path: '/profile',
         name: 'profile',
-        component: () => import('@/views/Profile.vue')
+        component: () => import('@/views/Profile.vue'),
     },
     {
         path: '/',
         name: 'rooms',
         component: () => import('@/views/ListRoom.vue'),
+    },
+    {
+        path: '/rooms/:id',
+        name: 'room',
+        component: () => import('@/views/RoomPage.vue'),
     },
     {
         path: '/createroom',

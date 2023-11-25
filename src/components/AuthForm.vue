@@ -71,9 +71,9 @@
             </div>
             <p class="element footer">
                 {{ content.footerText }}
-                <router-link :to="content.footerLinkObj" class="link">
+                <a @click="changeStage()" class="link">
                     {{ content.footerLinkText }}
-                </router-link>
+                </a>
             </p>
         </v-form>
     </v-container>
@@ -81,9 +81,7 @@
 
 <script setup lang="ts">
 import { ref, reactive, computed, Ref } from 'vue'
-import { RouteLocationRaw } from 'vue-router'
 import axios from 'axios'
-import router from '@/router'
 
 interface PasswordData<T = HTMLInputElement> {
     input: T
@@ -95,6 +93,18 @@ interface UserData {
     password: string
     repeatedPassword?: string
     email?: string
+}
+
+const emit = defineEmits<{
+    (e: 'changeStage'): void
+    (e: 'successfullLogin'): void
+}>()
+function changeStage() {
+    userData.email = ''
+    userData.username = ''
+    userData.password = ''
+    userData.repeatedPassword = ''
+    emit('changeStage')
 }
 
 const props = withDefaults(
@@ -111,8 +121,6 @@ const content = computed(() =>
               submitLink: 'login',
               footerText: 'Нет аккаунта?',
               footerLinkText: 'Зарегистрироваться',
-              footerLinkObj: <RouteLocationRaw>{ name: 'registration' },
-              redirectLink: <RouteLocationRaw>{ name: 'home' },
           }
         : {
               headerText: 'Регистрация',
@@ -120,8 +128,6 @@ const content = computed(() =>
               submitLink: 'register',
               footerText: 'Уже есть аккаунт?',
               footerLinkText: 'Войти в аккаунт',
-              footerLinkObj: <RouteLocationRaw>{ name: 'login' },
-              redirectLink: <RouteLocationRaw>{ name: 'login' },
           },
 )
 
@@ -189,8 +195,13 @@ async function formSubmit() {
         errorText.value = ''
         await axios.post(content.value.submitLink, userDataToSend.value, {
             timeout: 3000,
+            withCredentials: true,
         })
-        router.push(content.value.redirectLink)
+        if (props.loginStage) {
+            emit('successfullLogin')
+            return
+        }
+        changeStage()
     } catch (e) {
         console.log(e)
         errorText.value = 'На сервере произошла ошибка'
@@ -223,6 +234,7 @@ async function formSubmit() {
     background-color: rgb(var(--v-theme-primary));
 }
 .link {
+    cursor: pointer;
     text-decoration: none;
     color: rgb(var(--v-theme-primary));
     &:hover {
