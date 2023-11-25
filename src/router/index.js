@@ -18,11 +18,6 @@ const routes = [
         component: () => import('@/views/LoginPage.vue'),
     },
     {
-        path: '/rooms',
-        name: 'rooms',
-        component: () => import('@/views/ListRoom.vue'),
-    },
-    {
         path: '/profile',
         name: 'profile',
         component: () => import('@/views/Profile.vue')
