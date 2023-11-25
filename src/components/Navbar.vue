@@ -1,5 +1,5 @@
 <template>
-    <v-bottom-navigation tag="footer">
+    <v-bottom-navigation>
         <v-btn v-for="item in items" :value="item.value">
             <v-icon>{{ item.icon }}</v-icon>
 
@@ -10,7 +10,7 @@
 
 <script setup>
 const items = [
-    { icon: 'mdi-play', text: 'Слушать', value: 'play', route: '/' },
+    { icon: 'mdi-play', text: 'Слушать', value: 'play', route: '/login' },
     { icon: 'mdi-heart', text: 'Избранное', value: 'favorites', route: '/' },
     { icon: 'mdi-magnify', text: 'Поиск', value: 'search', route: '/' },
     {
